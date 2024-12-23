@@ -1,0 +1,8 @@
+<aura:component implements="force:lightningQuickAction,force:hasRecordId">
+    <aura:attribute name="recordId" type="String" />
+
+    <!-- Handle local component events -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <c:linkMandatoryProducts recordId="{!v.recordId}"/>
+</aura:component>

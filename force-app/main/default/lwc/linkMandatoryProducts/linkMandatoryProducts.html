@@ -1,0 +1,32 @@
+<template>
+    <div if:true={isWorking}>
+        <lightning-spinner alternative-text="Working..." size="medium"></lightning-spinner>
+    </div>
+    <lightning-card variant="Narrow" icon-name="standard:account">
+        <h3 slot="title">{accountName}</h3>
+        <div slot="footer">
+            <lightning-button label="Remove" title="Remove" onclick={unlink}></lightning-button>
+            <lightning-button label="Apply" title="Apply" variant="brand" class="slds-m-left_medium" onclick={save}></lightning-button>
+        </div>        
+        <lightning-input slot="actions" type="toggle" label={labels.show.label} 
+                        checked={showingAllProducts}
+                        name="showAllProducts" 
+                        message-toggle-active={labels.allproducts.label} 
+                        message-toggle-inactive={labels.mandatory.label}
+                        onchange={toggleShownProducts}>
+        </lightning-input>
+        <div class="slds-p-around_small">
+            <lightning-combobox name="productStatus" label="Status" 
+                                value={productStatus}
+                                options={productStatusOptions}
+                                onchange={handleProductStatusChange}>                            
+            </lightning-combobox>
+        </div>
+        <div style="height: 400px;">
+            <lightning-datatable key-field="id"
+                        data={data}
+                        columns={columns}>
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+</template>
